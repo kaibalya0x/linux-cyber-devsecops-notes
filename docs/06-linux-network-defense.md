@@ -166,3 +166,10 @@ curl http://127.0.0.1:8088/
 ```
 
 This is a safe way to learn TCP connection setup and HTTP visibility without sniffing somebody else's traffic.
+
+
+## A note on network investigations
+
+Seeing an unfamiliar address in `ss` is a reason to investigate, not proof of compromise. I usually start with the PID, executable, user, destination, start time and expected role of the service.
+
+The same approach applies to firewall rules. I want to understand what traffic is supposed to be allowed before I start blocking things.
