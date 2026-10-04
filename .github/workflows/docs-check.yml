@@ -1,0 +1,35 @@
+name: docs-check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-and-script-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        # Full SHA pinned; update deliberately after reviewing the upstream release.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Validate shell scripts
+        run: |
+          set -euo pipefail
+          for f in scripts/*.sh; do
+            bash -n "$f"
+          done
+
+      - name: Repository smoke test
+        run: ./scripts/test.sh
+
+      - name: Check accidental secrets by filename
+        run: |
+          set -euo pipefail
+          if find . -type f             -not -path './.git/*'             ( -name '*.pem' -o -name '*.key' -o -name '.env' )             | grep -q .; then
+            echo 'Potential secret-like files detected.' >&2
+            exit 1
+          fi
