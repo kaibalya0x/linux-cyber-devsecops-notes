@@ -1,43 +1,43 @@
-# Linux → Cybersecurity → DevSecOps Field Notes
+# Linux Operations & Security Field Notes
 
-> A practical, command-first notebook for learning Linux as an operator, defender, and DevSecOps engineer.
+> A practical, command-first notebook for learning Linux as an operator, troubleshooter, and defender.
 
-This repository is deliberately organized like working notes rather than a textbook. Each topic answers four questions:
+This repository is organized like working notes rather than a textbook. Each topic is built around four questions:
 
 1. **What is happening?**
-2. **What command shows me the truth?**
+2. **What command shows me the current state?**
 3. **What can go wrong?**
 4. **How would I investigate it at 2 AM?**
 
-The material is original synthesis built from Linux/Ubuntu, OpenSSH, GitHub, Docker, Kubernetes, OWASP, NIST and CIS guidance. It is not a copy of any one vendor's documentation.
+The material is an original synthesis of Linux administration, networking, system security, logging, and incident-triage knowledge. It is written as practical notes rather than copied vendor documentation.
 
 ## What this covers
 
-| Layer | Focus |
+| Area | Focus |
 |---|---|
 | Linux foundations | shell, filesystem, users, permissions, processes, packages |
 | Operations | systemd, journald, storage, networking, troubleshooting |
-| Security | SSH, sudo, MAC, firewalling, auditing, hardening, incident triage |
-| Detection | logs, process/network triage, IOC thinking, evidence handling |
-| Containers | Docker image/build/runtime security, secrets, least privilege |
-| Kubernetes | RBAC, workloads, secrets, admission, network boundaries |
-| DevSecOps | secure Git, CI/CD, SAST, SCA, secrets, SBOM, image scanning, OIDC |
-| Practice | repeatable local labs and defensive exercises |
+| Security | SSH, sudo, capabilities, MAC controls, firewalling, auditing, hardening |
+| Networking | interfaces, routes, sockets, DNS, packet inspection, host firewalling |
+| Detection | authentication logs, process/network triage, IOC thinking, evidence handling |
+| Practical labs | repeatable Linux exercises on a VM, WSL environment, or test host |
+| Reference material | concise command examples, investigation patterns, and troubleshooting notes |
 
 ## Suggested path
 
-**Week 1:** `docs/01-linux-foundations.md` → `docs/02-files-permissions-processes.md`
-**Week 2:** `docs/03-shell-text-networking.md` → `docs/04-systemd-logs-monitoring.md`
-**Week 3:** `docs/05-linux-security-hardening.md` → `docs/06-linux-network-defense.md`
-**Week 4:** `docs/07-detection-response.md`
-**Week 5:** `docs/08-devsecops-principles.md` → `docs/09-docker-security.md`
-**Week 6:** `docs/10-kubernetes-security.md` → `docs/11-github-actions-security.md` → `docs/12-secure-ci-pipeline.md`
+**Start here:** `docs/01-linux-foundations.md` → `docs/02-files-permissions-processes.md`
 
-Use `docs/13-labs.md` when you want to turn reading into muscle memory.
+**Build operator skills:** `docs/03-shell-text-networking.md` → `docs/04-systemd-logs-monitoring.md`
+
+**Build security skills:** `docs/05-linux-security-hardening.md` → `docs/06-linux-network-defense.md`
+
+**Practice investigation:** `docs/07-detection-response.md`
+
+**Then practice:** `docs/08-labs.md` → `docs/09-cheatsheet.md` → `docs/10-troubleshooting.md`
 
 ## Safety boundary
 
-Everything here is intended for systems you own or are explicitly authorized to test. The labs focus on administration, defensive testing, detection, hardening, and safe emulation of failures. Do not run scanning, exploitation, password testing, or configuration changes against systems without authorization.
+Everything here is intended for systems you own or are explicitly authorized to test. The labs focus on administration, defensive testing, detection, hardening, and safe emulation of failures. Do not run scanning, password testing, packet capture, or configuration changes against systems without authorization.
 
 ## A useful habit
 
@@ -63,14 +63,8 @@ This one habit prevents a surprising number of outages.
 
 - Ubuntu Server Security: https://ubuntu.com/server/docs/how-to/security/
 - Ubuntu AppArmor: https://ubuntu.com/server/docs/how-to/security/apparmor/
-- OpenSSH: https://www.openssh.com/manual.html
-- systemd: https://www.freedesktop.org/software/systemd/man/latest/
-- NIST SSDF SP 800-218: https://csrc.nist.gov/pubs/sp/800/218/final
-- OWASP DevSecOps: https://devguide.owasp.org/en/09-operations/01-devsecops/
-- GitHub Actions security: https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions
-- GitHub OIDC: https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect
-- Docker build secrets: https://docs.docker.com/build/building/secrets/
-- Kubernetes security checklist: https://kubernetes.io/docs/concepts/security/security-checklist/
+- OpenSSH manual: https://www.openssh.com/manual.html
+- systemd manuals: https://www.freedesktop.org/software/systemd/man/latest/
 - CIS Benchmarks: https://www.cisecurity.org/cis-benchmarks
 
 ## License
