@@ -207,3 +207,10 @@ ls -ld /opt/myapp
 ```
 
 Do not blindly copy this into production. A real service may require a writable cache, socket, device, or data directory. Least privilege is an engineering exercise, not a magic permission number.
+
+
+## A note on permissions
+
+One of the easiest Linux mistakes is to see `permission denied` and reach for `chmod 777`. I keep this note here as a reminder not to do that.
+
+When the permission bits look correct, I check the full path with `namei`, then ACLs, ownership, the process identity, and finally MAC controls such as AppArmor or SELinux. Usually the missing piece becomes obvious once those are checked in order.
