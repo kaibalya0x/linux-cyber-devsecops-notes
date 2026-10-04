@@ -1,65 +1,80 @@
-# Linux Operations & Security Field Notes
+# Linux Operations & Security Notes
 
-> A practical, command-first notebook for learning Linux as an operator, troubleshooter, and defender.
+I’m keeping this repository as a working set of Linux notes for learning, revision, and hands-on practice.
 
-This repository is organized like working notes rather than a textbook. Each topic is built around four questions:
+The idea is pretty simple: when I learn a command or a security concept, I want to know **why I would use it, what I should expect to see, and what I would check when the result is not what I expected**.
 
-1. **What is happening?**
-2. **What command shows me the current state?**
-3. **What can go wrong?**
-4. **How would I investigate it at 2 AM?**
+This is not meant to read like a finished textbook. Some sections are deliberately practical and a little rough around the edges because they are meant to be useful when I am actually working through a problem.
 
-The material is an original synthesis of Linux administration, networking, system security, logging, and incident-triage knowledge. It is written as practical notes rather than copied vendor documentation.
+## What is inside
 
-## What this covers
+- **Linux fundamentals** — filesystem, shell, users, groups, permissions and processes
+- **System administration** — packages, systemd, services, journald, storage and resource checks
+- **Linux networking** — interfaces, routes, sockets, DNS, TCP/UDP and packet capture
+- **Linux security** — SSH, sudo, capabilities, AppArmor, SELinux awareness, firewalling and auditing
+- **Detection and triage** — authentication logs, process investigation, persistence checks and basic evidence handling
+- **Practical labs** — small exercises that can be run on a Linux VM, WSL or another authorized test machine
+- **Quick reference** — commands I find myself looking up repeatedly
+- **Troubleshooting** — common problems and a sensible order for checking them
 
-| Area | Focus |
-|---|---|
-| Linux foundations | shell, filesystem, users, permissions, processes, packages |
-| Operations | systemd, journald, storage, networking, troubleshooting |
-| Security | SSH, sudo, capabilities, MAC controls, firewalling, auditing, hardening |
-| Networking | interfaces, routes, sockets, DNS, packet inspection, host firewalling |
-| Detection | authentication logs, process/network triage, IOC thinking, evidence handling |
-| Practical labs | repeatable Linux exercises on a VM, WSL environment, or test host |
-| Reference material | concise command examples, investigation patterns, and troubleshooting notes |
+## How I’m using the notes
 
-## Suggested path
+I generally try to follow this sequence:
 
-**Start here:** `docs/01-linux-foundations.md` → `docs/02-files-permissions-processes.md`
+```text
+observe → verify → understand → change → verify again
+```
 
-**Build operator skills:** `docs/03-shell-text-networking.md` → `docs/04-systemd-logs-monitoring.md`
-
-**Build security skills:** `docs/05-linux-security-hardening.md` → `docs/06-linux-network-defense.md`
-
-**Practice investigation:** `docs/07-detection-response.md`
-
-**Then practice:** `docs/08-labs.md` → `docs/09-cheatsheet.md` → `docs/10-troubleshooting.md`
-
-## Safety boundary
-
-Everything here is intended for systems you own or are explicitly authorized to test. The labs focus on administration, defensive testing, detection, hardening, and safe emulation of failures. Do not run scanning, password testing, packet capture, or configuration changes against systems without authorization.
-
-## A useful habit
-
-When a command changes a system, first learn the read-only command that explains the current state. For example:
+For example, before changing an SSH or firewall setting, I first check the current state:
 
 ```bash
-# before changing SSH settings
 sudo sshd -t
 sudo sshd -T | less
 
-# before changing a firewall
 sudo ufw status verbose
 sudo nft list ruleset
 
-# before restarting a service
 systemctl status ssh --no-pager
 journalctl -u ssh -n 100 --no-pager
 ```
 
-This one habit prevents a surprising number of outages.
+It is a small habit, but it makes troubleshooting much less stressful.
 
-## Primary references
+## A note about the examples
+
+Most of the examples are aimed at Linux systems and many use commands commonly found on Ubuntu/Debian. A few sections also show RHEL/Fedora or SELinux commands where the concept is useful across distributions.
+
+Do not copy a hardening setting blindly into a production machine. Read the command, understand what it changes, and have a way back before testing it.
+
+## Repository layout
+
+```text
+docs/
+├── 01-linux-foundations.md
+├── 02-files-permissions-processes.md
+├── 03-shell-text-networking.md
+├── 04-systemd-logs-monitoring.md
+├── 05-linux-security-hardening.md
+├── 06-linux-network-defense.md
+├── 07-detection-response.md
+├── 08-labs.md
+├── 09-cheatsheet.md
+└── 10-troubleshooting.md
+
+scripts/
+├── harden_ssh_check.sh
+├── log_triage.sh
+├── system_snapshot.sh
+└── test.sh
+```
+
+The scripts are intentionally small. I prefer a script that shows exactly what it is checking over a large “do everything” hardening script.
+
+## Safety
+
+The labs are for systems I own or have permission to test. Packet captures, account changes, firewall changes and security testing can affect real systems, so use a disposable lab whenever possible.
+
+## References
 
 - Ubuntu Server Security: https://ubuntu.com/server/docs/how-to/security/
 - Ubuntu AppArmor: https://ubuntu.com/server/docs/how-to/security/apparmor/
@@ -67,6 +82,10 @@ This one habit prevents a surprising number of outages.
 - systemd manuals: https://www.freedesktop.org/software/systemd/man/latest/
 - CIS Benchmarks: https://www.cisecurity.org/cis-benchmarks
 
-## License
+## Why I keep this public
 
-MIT — see `LICENSE`.
+I find that writing down a troubleshooting process is more useful than keeping a list of commands in private notes. I can come back later, spot something that was wrong or incomplete, and improve it.
+
+That is basically what this repository is: **Linux notes that I can keep improving as I learn.**
+
+MIT License — see `LICENSE`.
