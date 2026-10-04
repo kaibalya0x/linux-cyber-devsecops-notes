@@ -114,3 +114,16 @@ sudo journalctl -u ssh -b --no-pager
 ```
 
 Restore the last known-good configuration only after preserving the failing version for analysis.
+
+
+## A troubleshooting habit that helps
+
+I try to change one thing at a time.
+
+If I change the firewall, service configuration, DNS and permissions together, I might fix the problem but still not know what caused it. My usual workflow is:
+
+```text
+reproduce → collect evidence → form one hypothesis → make one change → test again
+```
+
+It takes a little more patience, but the result is much easier to understand later.
