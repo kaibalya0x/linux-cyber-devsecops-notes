@@ -133,7 +133,7 @@ getcap -r /usr/bin /usr/sbin 2>/dev/null
 capsh --print 2>/dev/null | head -n 40
 ```
 
-In container security, capabilities matter because a process may be non-root yet still hold a capability that changes the blast radius.
+Capabilities matter because Linux can delegate specific privileged operations without giving a process full UID 0 privileges. When investigating a process, inspect its effective capabilities before assuming that a non-root UID means low privilege.
 
 ## 8. Process practical: explain an unexpected listener
 
