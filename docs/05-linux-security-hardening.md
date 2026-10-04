@@ -190,3 +190,10 @@ Use this as a review sheet rather than a “one command harden script”:
 ## 12. A hardening rule worth remembering
 
 If a security control cannot be explained in one sentence, cannot be tested, and has no rollback plan, it probably does not belong in an automated hardening script yet.
+
+
+## A practical reminder
+
+There is no single Linux hardening checklist that fits every machine. A server running SSH, a desktop workstation, and a small lab VM have different needs.
+
+I prefer to make one change at a time, record what changed, test the application, and keep a rollback path. It is slower than copying a huge hardening script, but it is much easier to understand what actually helped and what broke the system.
