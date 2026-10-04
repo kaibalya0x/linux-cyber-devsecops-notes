@@ -1,6 +1,6 @@
 # 08 — Practical Linux Lab Track
 
-The labs are designed to be run on a disposable Ubuntu VM, WSL environment, container, or local test host. Use systems you own or have explicit authorization to test.
+The labs are designed to be run on a disposable Ubuntu VM, WSL environment, or local Linux test host. Use systems you own or have explicit authorization to test.
 
 ## Lab 1 — Linux baseline snapshot
 
