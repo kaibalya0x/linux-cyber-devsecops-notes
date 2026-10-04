@@ -86,7 +86,7 @@ pstree -aps "$PID"
 sudo ss -tpn | grep "pid=$PID,"
 ```
 
-The parent-child relationship often reveals whether a process came from a service manager, a shell, a container runtime, or a user session.
+The parent-child relationship often reveals whether a process came from a service manager, a shell, a kernel worker, or a user session.
 
 ## 5. Persistence review
 
