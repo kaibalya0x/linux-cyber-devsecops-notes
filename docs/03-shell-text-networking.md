@@ -169,3 +169,14 @@ journalctl --since '30 min ago' | grep -Ei 'error|timeout|connect|dns'
 ```
 
 Do not label an IP “malicious” just because you do not recognize it. Establish process ownership, expected destinations, time, DNS history where available, and the application's role first.
+
+
+## What I try not to forget
+
+A successful ping, DNS lookup, or TCP connection does not prove that an application is healthy. I try to keep the layers separate in my head:
+
+```text
+DNS → route → TCP → TLS → HTTP → application
+```
+
+That sounds obvious, but it is very easy to skip straight to the firewall or application configuration when the real problem is one layer earlier.
