@@ -215,3 +215,16 @@ Containment action:
 Recovery action:
 Open questions:
 ```
+
+
+## The part that is easy to get wrong
+
+During an investigation it is tempting to kill the strange process, delete the suspicious file and reboot. Those actions might eventually be necessary, but doing them first can remove the evidence that explains what happened.
+
+For learning purposes, I try to practice the quieter workflow:
+
+```text
+observe → record → preserve → investigate → contain
+```
+
+It also makes the later cleanup decision much easier because there is a reason behind it.
