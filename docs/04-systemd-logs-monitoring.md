@@ -157,3 +157,14 @@ uptime
 ```
 
 Run it when the system looks healthy too. Otherwise you have no baseline for “healthy.”
+
+
+## My usual order when a service breaks
+
+I try not to restart first.
+
+```text
+status → journal → unit file → process → configuration → change
+```
+
+A restart can make the service come back, but it can also remove useful clues. If the service is already down, the logs and exit status are usually more useful than another restart.
