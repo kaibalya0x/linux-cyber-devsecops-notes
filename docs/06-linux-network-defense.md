@@ -113,9 +113,9 @@ internal:    database / message bus / service-to-service
 
 Do not allow the web tier to connect everywhere simply because “it might be useful later.” Explicit egress rules are powerful because many attacks need an outbound channel after compromise.
 
-## 7. Network namespace lab
+## 7. Linux network namespace lab
 
-Linux namespaces are a core building block behind container isolation.
+Linux network namespaces provide separate network views on the same Linux host. They are useful for learning interfaces, routes, sockets, and firewall behavior in an isolated test environment.
 
 Check network namespaces on a host:
 
@@ -123,7 +123,7 @@ Check network namespaces on a host:
 ip netns list
 ```
 
-Create a disposable namespace:
+Create a disposable Linux network namespace:
 
 ```bash
 sudo ip netns add labns
@@ -131,7 +131,7 @@ sudo ip netns exec labns ip link
 sudo ip netns del labns
 ```
 
-The important lesson is isolation of the network view. Containers and network namespaces are related to this concept, though container security requires more controls than namespaces alone.
+The important lesson is that Linux can isolate network interfaces, routes, and sockets into separate namespaces. This makes namespaces useful for controlled networking experiments without changing the host's primary network stack.
 
 ## 8. Connection triage
 
