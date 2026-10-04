@@ -196,3 +196,10 @@ ss -lntup
 Save as `scripts/system_snapshot.sh`, make it executable, and run it on a disposable lab VM.
 
 The point is not the script itself. The point is learning what “normal” looks like on your own machine.
+
+
+## A note I keep coming back to
+
+I find Linux much easier once I stop treating commands as separate tricks. When something breaks, I want to know which layer I am looking at before I start changing things.
+
+For example, if I am told “the web server is down”, I would rather check the process, listener, route, firewall and application response one by one than restart the service immediately. That habit saves time and usually gives me a better explanation of the actual problem.
