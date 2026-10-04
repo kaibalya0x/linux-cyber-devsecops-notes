@@ -1,5 +1,7 @@
 # 09 — Linux Security & Operations Quick Reference
 
+This is the page I would keep open while working through a Linux problem. It is meant for quick lookup, not memorization.
+
 ## Identity
 
 ```bash
