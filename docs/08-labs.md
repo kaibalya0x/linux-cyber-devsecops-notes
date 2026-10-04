@@ -1,6 +1,6 @@
 # 08 — Practical Linux Lab Track
 
-The labs are designed to be run on a disposable Ubuntu VM, WSL environment, or local Linux test host. Use systems you own or have explicit authorization to test.
+These are small labs, not big projects. I would run them on a disposable Ubuntu VM, WSL environment, or another Linux test host I am allowed to change. The useful part is writing down what I expected before running the command and then comparing that with what actually happened.
 
 ## Lab 1 — Linux baseline snapshot
 
@@ -212,3 +212,16 @@ You are ready to move to the next level when you can explain, without memorizing
 - how firewall rules affect packet flow;
 - how to preserve evidence while troubleshooting a suspicious host;
 - how to compare a current host state against a known baseline.
+
+
+## Keep a lab journal
+
+For each exercise, note three things:
+
+```text
+Expected:
+Observed:
+What I learned:
+```
+
+That small habit turns a command exercise into something I can revise later.
