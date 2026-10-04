@@ -24,7 +24,7 @@ jobs:
           done
 
       - name: Repository smoke test
-        run: ./scripts/test.sh
+        run: bash ./scripts/test.sh
 
       - name: Check accidental secrets by filename
         run: |
