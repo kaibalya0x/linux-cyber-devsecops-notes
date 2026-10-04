@@ -29,7 +29,9 @@ jobs:
       - name: Check accidental secrets by filename
         run: |
           set -euo pipefail
-          if find . -type f             -not -path './.git/*'             ( -name '*.pem' -o -name '*.key' -o -name '.env' )             | grep -q .; then
-            echo 'Potential secret-like files detected.' >&2
+          matches=$(find . -type f             -not -path './.git/*'             -not -path './.github/*'             \( -name '*.pem' -o -name '*.key' -o -name '.env' \))
+          if [[ -n "$matches" ]]; then
+            echo 'Potential secret-like files detected:' >&2
+            printf '%s\n' "$matches" >&2
             exit 1
           fi
